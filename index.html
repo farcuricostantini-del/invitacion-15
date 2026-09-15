@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Invitación de 15</title>
+
+  <!-- Fuentes: 'Great Vibes' para lettering y 'Montserrat' para cuerpo -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1: #f7e8ee;
+      --bg2: #fff7f0;
+      --accent: #b88c5a;
+      --muted: #6b5a53;
+      --card-bg: rgba(255,255,255,0.9);
+      --glass: rgba(255,255,255,0.6);
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(135deg,var(--bg1) 0%, #fff3f6 40%, var(--bg2) 100%);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:2rem;
+    }
+
+    .invitation {
+      width:100%;
+      max-width:920px;
+      border-radius:20px;
+      box-shadow: 0 10px 40px rgba(100,80,70,0.12);
+      overflow:hidden;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.7), var(--card-bg));
+      backdrop-filter: blur(6px) saturate(1.1);
+    }
+
+    /* Left: hero artwork + title */
+    .hero {
+      padding:48px 40px;
+      background:
+        radial-gradient(600px 300px at 10% 10%, rgba(184,140,90,0.06), transparent 10%),
+        linear-gradient(180deg, rgba(255,255,255,0.4), transparent);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:18px;
+      position:relative;
+    }
+
+    .title {
+      font-family:'Great Vibes', cursive;
+      font-size:68px;
+      color:var(--accent);
+      line-height:0.9;
+      letter-spacing:1px;
+      text-shadow:
+        0 2px 0 rgba(255,255,255,0.5),
+        0 6px 18px rgba(120,80,50,0.12);
+      margin:0;
+    }
+
+    .subtitle {
+      font-weight:500;
+      color:var(--muted);
+      font-size:18px;
+      margin-top:6px;
+    }
+
+    .decor {
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-top:18px;
+    }
+
+    .flower {
+      width:120px;
+      height:120px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,235,240,0.9), transparent 30%),
+        conic-gradient(from 90deg at 50% 50%, #fbe9f2, #ffdfe8, #fff1f6);
+      border-radius:50%;
+      box-shadow: 0 8px 24px rgba(180,120,80,0.08), inset 0 -6px 18px rgba(255,255,255,0.3);
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transform:rotate(-6deg);
+    }
+
+    .flower svg { width:72px; height:72px; opacity:0.95; }
+
+    .note {
+      font-size:15px;
+      color: #7a6155;
+      max-width:420px;
+    }
+
+    /* Right: details card */
+    .details {
+      padding:34px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.95));
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      align-items:flex-start;
+      justify-content:center;
+    }
+
+    .section-title {
+      font-weight:700;
+      color:var(--muted);
+      font-size:13px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+    }
+
+    .info {
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+      border-radius:12px;
+      padding:14px 16px;
+      width:100%;
+      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.02);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .big {
+      font-size:20px;
+      font-weight:600;
+      color:var(--muted);
+    }
+
+    .muted {
+      font-size:13px;
+      color:#8b776a;
+    }
+
+    .controls {
+      display:flex;
+      gap:10px;
+      margin-top:6px;
+      width:100%;
+    }
+
+    .btn {
+      background:var(--accent);
+      color:white;
+      border:none;
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:600;
+      box-shadow: 0 6px 14px rgba(184,140,90,0.16);
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+
+    .btn.secondary {
+      background:transparent;
+      color:var(--muted);
+      border:1px dashed rgba(120,90,70,0.12);
+      box-shadow:none;
+    }
+
+    .btn:active { transform:translateY(1px); }
+
+    .footer {
+      font-size:13px;
+      color:#6a534a;
+      margin-top:6px;
+    }
+
+    /* responsive */
+    @media (max-width:880px){
+      .invitation { grid-template-columns: 1fr; gap:0; }
+      .hero{ padding:28px; text-align:center;}
+      .details{ padding:24px; }
+      .flower { display:none; }
+      .title{ font-size:48px;}
+    }
+  </style>
+</head>
+<body>
+  <main class="invitation" role="main" aria-labelledby="event-title">
+    <section class="hero" aria-hidden="false">
+      <h1 id="event-title" class="title">Celebrando 15</h1>
+      <p class="subtitle">Acompáñanos a una noche llena de magia, familia y baile</p>
+
+      <div class="decor">
+        <div class="flower" aria-hidden="true">
+          <!-- simple floral icon -->
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="#f6d7e4">
+              <path d="M32 14c3-6 12-8 16-5 4 3 2 12-4 16s-13 3-16-4z"/>
+              <path d="M32 50c-3 6-12 8-16 5-4-3-2-12 4-16s13-3 16 4z"/>
+              <path d="M14 20c-6 3-8 12-5 16 3 4 12 2 16-4s3-13-4-16z"/>
+              <path d="M50 44c6-3 8-12 5-16-3-4-12-2-16 4s-3 13 4 16z"/>
+            </g>
+            <circle cx="32" cy="32" r="8" fill="#ffdfe8"/>
+          </svg>
+        </div>
+
+        <p class="note">Espera un ambiente cálido, detalles dorados y música para bailar. Esta invitación genera una fecha aleatoria cada vez que se abre o pulsas "Regenerar fecha".</p>
+      </div>
+    </section>
+
+    <aside class="details" aria-label="Detalles del evento">
+      <div>
+        <div class="section-title">Para</div>
+        <div class="info">
+          <div class="big" id="name">Isabella María</div>
+          <div class="muted">Quinceañera</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">Fecha y hora</div>
+        <div class="info">
+          <div class="big" id="fecha">—</div>
+          <div class="muted" id="hora">—</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">Lugar</div>
+        <div class="info">
+          <div class="big" id="lugar">—</div>
+          <div class="muted" id="direccion">—</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">Confirmar asistencia</div>
+        <div class="info">
+          <div class="big" id="rsvp">Rosario: +34 612 345 678</div>
+          <div class="muted">Por favor confirma antes de una semana de la fecha</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn" id="regen">Regenerar fecha</button>
+        <button class="btn secondary" id="print" title="Imprimir">Imprimir</button>
+      </div>
+
+      <div class="footer">Traje: Formal • No niños menores de 5 años</div>
+    </aside>
+  </main>
+
+  <script>
+    // Datos editables: puedes añadir o cambiar nombres/ubicaciones
+    const venues = [
+      {name: "Salón Jardines del Lago", address: "Av. del Lago 123, Ciudad Bella"},
+      {name: "Hacienda La Rosa", address: "Camino Real km 8, Valle Verde"},
+      {name: "Hotel Palacio Dorado", address: "Plaza Mayor 1, Centro Histórico"},
+      {name: "Villa Brisa", address: "Río Claro 45, Barrio de las Flores"}
+    ];
+
+    const rsvps = [
+      "Rosario: +34 612 345 678",
+      "Contacto: familia@example.com",
+      "Confirmar: +1 (555) 987-6543",
+      "RSVP: evento@correo.com"
+    ];
+
+    // Genera una fecha aleatoria entre ahora y dentro de 12 meses
+    function randomDateBetween(start, end) {
+      return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    }
+
+    function pad(n){ return String(n).padStart(2,'0'); }
+
+    function formatDateSpanish(d){
+      // Fecha: lunes, 1 de enero de 2027
+      const dateStr = d.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      // Hora: 19:30
+      const timeStr = d.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+      // Capitalizar primera letra
+      return { dateStr: dateStr.charAt(0).toUpperCase()+dateStr.slice(1), timeStr };
+    }
+
+    function pickRandom(array){
+      return array[Math.floor(Math.random() * array.length)];
+    }
+
+    function generateInvitation(){
+      const now = new Date();
+      const end = new Date();
+      end.setFullYear(end.getFullYear() + 1);
+
+      let d = randomDateBetween(now, end);
+
+      // Ajustar horas a rango típico de evento (16:00 - 23:00)
+      const hour = 16 + Math.floor(Math.random()*8); // 16..23
+      const minute = [0,0,15,30,45][Math.floor(Math.random()*5)];
+      d.setHours(hour, minute, 0, 0);
+
+      const {dateStr, timeStr} = formatDateSpanish(d);
+      const venue = pickRandom(venues);
+      const rsvp = pickRandom(rsvps);
+
+      document.getElementById('fecha').textContent = dateStr;
+      document.getElementById('hora').textContent = timeStr;
+      document.getElementById('lugar').textContent = venue.name;
+      document.getElementById('direccion').textContent = venue.address;
+      document.getElementById('rsvp').textContent = rsvp;
+    }
+
+    document.getElementById('regen').addEventListener('click', generateInvitation);
+    document.getElementById('print').addEventListener('click', () => window.print());
+
+    // Inicializar
+    generateInvitation();
+  </script>
+</body>
+</html>
